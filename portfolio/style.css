@@ -121,12 +121,14 @@ aside div:nth-child(5) span {
     float: left;
 }
 .about-item li {
+    font-size: 20px;
     margin-bottom: 20px;
 }
 .about-item-list {
     width: 150px;
     border: 1px solid #eee;
     border-radius: 7px;
+    font-size: 20px;
     text-align: center;
 }
 /* #Skills */
@@ -189,17 +191,45 @@ aside div:nth-child(5) span {
     height: 100%;
 }
 .work-box {
-    width: 48%;
+    /* width: 48%; */
+    width: 23vh;
     height: 80%;
     border: 1px solid #eee;
-    border-radius: 5px;
+    border-radius: 500px;
     text-align: center;
 }
-.work-box img {
-    width: 100%;
-    border-radius: 5px;
-    /* height: 70%; */
+.work-text {
+    display: none;
 }
+.work-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 500px;
+    color: #fff;
+    font-size: 80px;
+    background: none;
+    background-color: #555555;
+}
+.work-box:hover .work-img {
+    width: 100%;
+    height: 50%;
+    border-radius: 500px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    font-size: 0;
+    background-image: url(https://helpx.adobe.com/content/dam/help/en/photoshop/using/quick-actions/remove-background-before-qa1.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.work-box:hover .work-text {
+    display: block;
+}
+/* 
+work-box 껍데기
+ */
 .work-box button {
     background: none;
     border: 1px solid black;
@@ -226,7 +256,24 @@ aside div:nth-child(5) span {
     }
     .work-box {
         float: left;
+        border-radius: 5px;
         margin-bottom: 10px;
+    }
+    .work-box:hover .work-img {
+        border-radius: 5px;
+    }
+    .work-img {
+        width: 100%;
+        height: 50%;
+        border-radius: 5px;
+        font-size: 0;
+        background-image: url(https://helpx.adobe.com/content/dam/help/en/photoshop/using/quick-actions/remove-background-before-qa1.png);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+    .work-text {
+        display: block;
     }
 }
 /* 모바일 */
