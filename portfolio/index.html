@@ -15,24 +15,25 @@
         />
         <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="style.css" />
+        <link rel="shortcut icon" href="./img/favicon.png" />
     </head>
     <body>
         <aside>
             <!-- Close, Open할때 움직임 주기, 페이지 열릴때 Open 효과주기 -->
-            <div><span>Home</span></div>
-            <div><span>About me</span></div>
-            <div><span>Skills</span></div>
-            <div><span>Project</span></div>
-            <div><span>Close</span></div>
+            <div class="aside-menu"><span>Home</span></div>
+            <div class="aside-menu"><span>About me</span></div>
+            <div class="aside-menu"><span>Skills</span></div>
+            <div class="aside-menu"><span>Project</span></div>
+            <div id="aside-close"><span>Close</span></div>
         </aside>
-        <section class="home-section">
+        <section id="home-section">
             <!-- 전체 텍스트 애니메이션 주기, 애니메이션 종류 좀 더 찾아보기 -->
             <!-- 배경이미지 or 포인트 아이콘 -->
             <h1 class="animate__animated animate__bounce">Kimsumi</h1>
             <h1>Front-end</h1>
             <h1>Portfolio</h1>
         </section>
-        <section class="about-section">
+        <section id="about-section">
             <h1>#About-me</h1>
             <div class="about-border">
                 <div class="about-box">
@@ -58,12 +59,12 @@
                     </div>
                 </div>
             </div>
-            <div class="about-contact">
-                CONTACT
-                <span class="about-kakao"><a href="#">s</a></span>
-            </div>
         </section>
-        <section class="skill-section">
+        <div class="about-contact">
+            CONTACT
+            <span class="about-kakao"><a href="#">kakao</a></span>
+        </div>
+        <section id="skill-section">
             <h1>#Skills</h1>
             <p class="skill-more">자세히 보기</p>
             <div class="skill-border">
@@ -150,14 +151,15 @@
                 </div> -->
             </div>
         </section>
-        <section class="project-section">
+        <section id="project-section">
             <!-- 본 사이트는 상업적 목적이 아닌 개인 포트폴리오 용도로 제작되었습니다. 홈페이지 일부 내용과
             기다 이미지 등은 출처가 따로 있음을 밝힙니다. arlet 등으로 명시해주기 -->
             <!-- 동적 효과 -->
             <h1>#Project</h1>
             <div class="project-border">
-                <div class="work-slide">
+                <div id="work-slide">
                     <div class="work-box">
+                        <div class="work-cover">01</div>
                         <div class="work-img">01</div>
                         <div class="work-text">
                             <p>프로젝트명</p>
@@ -167,6 +169,7 @@
                         </div>
                     </div>
                     <div class="work-box">
+                        <div class="work-cover">02</div>
                         <div class="work-img">02</div>
                         <div class="work-text">
                             <p>프로젝트명</p>
@@ -176,8 +179,8 @@
                         </div>
                     </div>
                     <div class="work-box">
+                        <div class="work-cover">03</div>
                         <div class="work-img">03</div>
-
                         <div class="work-text">
                             <p>프로젝트명</p>
                             <div>프로젝트 소개</div>
@@ -186,6 +189,7 @@
                         </div>
                     </div>
                     <div class="work-box">
+                        <div class="work-cover">04</div>
                         <div class="work-img">04</div>
                         <div class="work-text">
                             <p>프로젝트명</p>

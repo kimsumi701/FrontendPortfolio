@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 section {
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -10,14 +11,14 @@ section {
 section h1 {
     font-size: 60px;
 }
-section h1:not(.home-section h1) {
+section h1:not(#home-section h1) {
     color: #aaaaaa;
 }
 /* aside */
 aside {
     position: fixed;
     right: 40px;
-    top: 25%;
+    top: 20vh;
 }
 aside div {
     position: relative;
@@ -28,6 +29,7 @@ aside div {
     border-left: 55px solid transparent;
     border-right: 55px solid transparent;
     /* border-block-color: black; */
+    transition: 2s;
     cursor: pointer;
 }
 aside div:nth-child(1) {
@@ -50,10 +52,10 @@ aside div span {
     display: block;
     position: absolute;
     left: -23px;
+    bottom: -90px;
     color: black;
 }
 aside div:nth-child(1) span {
-    bottom: -90px;
     transform: rotate(-20deg);
 }
 aside div:nth-child(2) span {
@@ -61,18 +63,21 @@ aside div:nth-child(2) span {
     transform: rotate(35deg);
 }
 aside div:nth-child(3) span {
-    bottom: -90px;
     transform: rotate(-50deg);
 }
 aside div:nth-child(4) span {
-    bottom: -90px;
     transform: rotate(65deg);
 }
 aside div:nth-child(5) span {
-    bottom: -90px;
     transform: rotate(10deg);
 }
+#aside-close {
+    transition: 1.7s;
+}
 /* #About me */
+#about-section {
+    height: 80vh;
+}
 .about-border {
     width: 80%;
     height: 60vh;
@@ -93,7 +98,7 @@ aside div:nth-child(5) span {
 }
 .about-contact {
     width: 100%;
-    height: 20%;
+    height: 150px;
     text-align: center;
     color: #fff;
     font-size: 38px;
@@ -184,7 +189,7 @@ aside div:nth-child(5) span {
     width: 80%;
     height: 80vh;
 }
-.work-slide {
+#work-slide {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -198,10 +203,7 @@ aside div:nth-child(5) span {
     border-radius: 500px;
     text-align: center;
 }
-.work-text {
-    display: none;
-}
-.work-img {
+.work-cover {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -209,27 +211,19 @@ aside div:nth-child(5) span {
     border-radius: 500px;
     color: #fff;
     font-size: 80px;
-    background: none;
     background-color: #555555;
 }
-.work-box:hover .work-img {
-    width: 100%;
+.work-img {
+    display: none;
     height: 50%;
     border-radius: 500px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    color: #fff;
     font-size: 0;
     background-image: url(https://helpx.adobe.com/content/dam/help/en/photoshop/using/quick-actions/remove-background-before-qa1.png);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
 }
-.work-box:hover .work-text {
-    display: block;
-}
-/* 
-work-box 껍데기
- */
 .work-box button {
     background: none;
     border: 1px solid black;
@@ -238,6 +232,9 @@ work-box 껍데기
 .work-box button:hover {
     color: #fff;
     background-color: #555555;
+}
+.work-text {
+    display: none;
 }
 /* 테블릿 */
 @media (max-width: 1259px) {
@@ -250,19 +247,21 @@ work-box 껍데기
         font-size: 7em;
     }
     /* #Project */
-    .work-slide {
+    #work-slide {
         display: block;
         height: 50%;
     }
     .work-box {
         float: left;
+        width: 300px;
         border-radius: 5px;
         margin-bottom: 10px;
     }
-    .work-box:hover .work-img {
-        border-radius: 5px;
+    .work-cover {
+        display: none;
     }
     .work-img {
+        display: block;
         width: 100%;
         height: 50%;
         border-radius: 5px;
@@ -298,7 +297,7 @@ work-box 껍데기
         width: 100%;
     }
     /* #Project */
-    .work-slide {
+    #work-slide {
         display: block;
         height: 45%;
     }
