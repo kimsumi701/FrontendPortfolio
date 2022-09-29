@@ -17,21 +17,42 @@
         <link rel="stylesheet" href="style.css" />
         <link rel="shortcut icon" href="./img/favicon.png" />
     </head>
-    <body>
+    <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
         <aside>
             <!-- Close, Open할때 움직임 주기, 페이지 열릴때 Open 효과주기 -->
-            <div class="aside-menu"><span>Home</span></div>
-            <div class="aside-menu"><span>About me</span></div>
-            <div class="aside-menu"><span>Skills</span></div>
-            <div class="aside-menu"><span>Project</span></div>
-            <div id="aside-close"><span>Close</span></div>
+            <!-- <div id="aside-open">
+                <img src="./img/favicon.png" alt="select-icon" />
+                <span>Open</span>
+            </div> -->
+            <div class="aside-menu">
+                <img src="./img/favicon.png" alt="select-icon" />
+                <span>Home</span>
+            </div>
+            <div class="aside-menu">
+                <img src="./img/favicon.png" alt="select-icon" />
+                <span>About</span>
+            </div>
+            <div class="aside-menu">
+                <img src="./img/favicon.png" alt="select-icon" />
+                <span>Skills</span>
+            </div>
+            <div class="aside-menu">
+                <img src="./img/favicon.png" alt="select-icon" />
+                <span>Project</span>
+            </div>
+            <div id="aside-close">
+                <img src="./img/favicon.png" alt="select-icon" />
+                <span>Close</span>
+            </div>
         </aside>
         <section id="home-section">
-            <!-- 전체 텍스트 애니메이션 주기, 애니메이션 종류 좀 더 찾아보기 -->
             <!-- 배경이미지 or 포인트 아이콘 -->
-            <h1 class="animate__animated animate__bounce">Kimsumi</h1>
-            <h1>Front-end</h1>
-            <h1>Portfolio</h1>
+            <div class="home-side"></div>
+            <div class="home-title">
+                <h1 class="animate__animated animate__bounce">Kimsumi<img src="./img/favicon.png" alt="icon" /></h1>
+                <h1 class="animate__animated animate__bounce">Front-end</h1>
+                <h1 class="animate__animated animate__bounce">Portfolio</h1>
+            </div>
         </section>
         <section id="about-section">
             <h1>#About-me</h1>
@@ -41,7 +62,7 @@
                         <!-- 이미지같은거 -->
                         안녕하세요! 프론트엔드 개발자 김수미입니다. (소개내용)
                     </div>
-                    <div class="about-group">
+                    <!-- <div class="about-group">
                         <ul class="about-item">
                             <li>
                                 교육
@@ -56,14 +77,14 @@
                                 </ul>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
-        <div class="about-contact">
+        <!-- <div class="about-contact">
             CONTACT
             <span class="about-kakao"><a href="#">kakao</a></span>
-        </div>
+        </div> -->
         <section id="skill-section">
             <h1>#Skills</h1>
             <p class="skill-more">자세히 보기</p>
@@ -158,6 +179,7 @@
             <h1>#Project</h1>
             <div class="project-border">
                 <div id="work-slide">
+                    <div class="open-prograssbar"></div>
                     <div class="work-box">
                         <div class="work-cover">01</div>
                         <div class="work-img">01</div>
