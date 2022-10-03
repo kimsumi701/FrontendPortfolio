@@ -7,88 +7,196 @@
         <title>포트폴리오</title>
         <script src="https://kit.fontawesome.com/8baca4a0ad.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous"
-        />
         <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="style.css" />
         <link rel="shortcut icon" href="./img/favicon.png" />
     </head>
-    <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-        <aside>
-            <!-- Close, Open할때 움직임 주기, 페이지 열릴때 Open 효과주기 -->
-            <!-- <div id="aside-open">
-                <img src="./img/favicon.png" alt="select-icon" />
-                <span>Open</span>
-            </div> -->
-            <div class="aside-menu">
+    <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">        
+        <nav>
+            <!-- Close, Open할때 움직임 주기, 페이지 열릴때 Open 효과주기 -->            
+            <div class="nav-menu">
                 <img src="./img/favicon.png" alt="select-icon" />
                 <span>Home</span>
             </div>
-            <div class="aside-menu">
+            <div class="nav-menu">
                 <img src="./img/favicon.png" alt="select-icon" />
                 <span>About</span>
             </div>
-            <div class="aside-menu">
+            <div class="nav-menu">
                 <img src="./img/favicon.png" alt="select-icon" />
                 <span>Skills</span>
             </div>
-            <div class="aside-menu">
+            <div class="nav-menu">
                 <img src="./img/favicon.png" alt="select-icon" />
                 <span>Project</span>
             </div>
-            <div id="aside-close">
+            <div id="nav-close">
                 <img src="./img/favicon.png" alt="select-icon" />
                 <span>Close</span>
             </div>
-        </aside>
+        </nav>
         <section id="home-section">
-            <!-- 배경이미지 or 포인트 아이콘 -->
-            <div class="home-side"></div>
+            <!-- 출처 : https://codepen.io/leimapapa/pen/YzLxmJN -->
+            <svg viewBox="0 0 100 100">
+                <filter id="blur">
+                    <feMorphology in="SourceGraphic" operator="dilate" radius="0.3"></feMorphology>
+                </filter>
+                <filter id="turbulence">
+                    <feComponentTransfer>
+                        <feFuncR type="discrete" tableValues="0 0.5 0 1" />
+                        <feFuncG type="discrete" tableValues="0 0.5 0 1" />
+                        <feFuncB type="discrete" tableValues="0 0.5 0 1" />
+                        <feFuncA type="discrete" tableValues="0 0.5 0 1" />
+                    </feComponentTransfer>
+                </filter>
+                <filter id="convolve">
+                    <feComponentTransfer>
+                        <feFuncR type="table" tableValues="0 0.5 0 1" />
+                        <feFuncG type="table" tableValues="0 0.5 0 1" />
+                        <feFuncB type="table" tableValues="0 0.5 0 1" />
+                        <feFuncA type="table" tableValues="0 0.5 0 1" />
+                    </feComponentTransfer>
+                </filter>
+                <mask id="mask1">
+                    <line x1="0" y1="0%" x2="100" y2="200" stroke="white" stroke-width="15">
+                        <animate attributeName="x1" values="7.5%;92.5%;7.5%" dur="10s" begin="-2s" repeatCount="indefinite" />
+                        <animate attributeName="x2" values="7.5%;92.5%;7.5%" dur="10s" begin="-2s" repeatCount="indefinite" />
+                    </line>
+                </mask>
+                <mask id="mask2">
+                    <line x1="0" y1="0" x2="200" y2="100" stroke="white" stroke-width="15">
+                        <animate attributeName="y1" values="7.5%;92.5%;7.5%" dur="10s" begin="-4s" repeatCount="indefinite" />
+                        <animate attributeName="y2" values="7.5%;92.5%;7.5%" dur="10s" begin="-4s" repeatCount="indefinite" />
+                    </line>
+                </mask>
+                <mask id="mask3">
+                    <line x1="0" y1="0" x2="200" y2="100" stroke="white" stroke-width="15">
+                        <animate attributeName="y1" values="7.5%;92.5%;7.5%" dur="10s" begin="-6s" repeatCount="indefinite" />
+                        <animate attributeName="y2" values="7.5%;92.5%;7.5%" dur="10s" begin="-6s" repeatCount="indefinite" />
+                    </line>
+                </mask>
+                <mask id="mask4">
+                    <line x1="0" y1="0" x2="100" y2="200" stroke="white" stroke-width="15">
+                        <animate attributeName="x1" values="7.5%;92.5%;7.5%" dur="10s" begin="-8s" repeatCount="indefinite" />
+                        <animate attributeName="x2" values="7.5%;92.5%;7.5%" dur="10s" begin="-8s" repeatCount="indefinite" />
+                    </line>
+                </mask>
+                <image width="100%" filter="url(#turbulence)" mask="url(#mask2)" href="./img/white-concrete-wall.jpg" />
+                <image width="100%" filter="url(#blur)" mask="url(#mask1)" href="./img/white-concrete-wall.jpg" />
+                <image width="100%" filter="invert(100%)" mask="url(#mask4)" href="./img/white-concrete-wall.jpg" />
+                <image width="100%" filter="url(#convolve)" mask="url(#mask3)" href="./img/white-concrete-wall.jpg" />
+            </svg>            
             <div class="home-title">
-                <h1 class="animate__animated animate__bounce">Kimsumi<img src="./img/favicon.png" alt="icon" /></h1>
-                <h1 class="animate__animated animate__bounce">Front-end</h1>
-                <h1 class="animate__animated animate__bounce">Portfolio</h1>
+                <h1 class="animate__animated animate__bounce">Kimsumi Front-end Portfolio</h1>
             </div>
         </section>
         <section id="about-section">
             <h1>#About-me</h1>
-            <div class="about-border">
-                <div class="about-box">
-                    <div class="about-main-text">
-                        <!-- 이미지같은거 -->
-                        안녕하세요! 프론트엔드 개발자 김수미입니다. (소개내용)
+            <div id="contact-side">CONTACT</div>
+            <div class="about-border border">                
+                <!-- 키보드 오픈 소스 출처:  https://codepen.io/Alca/pen/vYeyOwd-->
+                <div class="keyboard">
+                    <div class="row">
+                        <div class="key orange" data-code="Escape" data-macro="orange"></div>
+                        <div class="key" data-code="Digit1"></div>
+                        <div class="key" data-code="Digit2"></div>
+                        <div class="key" data-code="Digit3"></div>
+                        <div class="key" data-code="Digit4"></div>
+                        <div class="key" data-code="Digit5"></div>
+                        <div class="key" data-code="Digit6"></div>
+                        <div class="key" data-code="Digit7"></div>
+                        <div class="key" data-code="Digit8"></div>
+                        <div class="key" data-code="Digit9"></div>
+                        <div class="key" data-code="Digit0"></div>
+                        <div class="key" data-code="Minus"></div>
+                        <div class="key" data-code="Equal"></div>
+                        <div class="key size-4 grey stretch" data-code="Backspace"></div>
+                        <div class="key red" data-macro="red"></div>
                     </div>
-                    <!-- <div class="about-group">
-                        <ul class="about-item">
-                            <li>
-                                교육
-                                <ul>
-                                    <li class="about-item-list">울산과학대학교</li>
-                                </ul>
-                            </li>
-                            <li>
-                                자격증
-                                <ul>
-                                    <li class="about-item-list">정보처리산업기사</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div> -->
+                    <div class="row">
+                        <div class="key size-2 grey stretch" data-code="Tab"></div>
+                        <div class="key" data-code="KeyQ"></div>
+                        <div class="key" data-code="KeyW"></div>
+                        <div class="key" data-code="KeyE"></div>
+                        <div class="key" data-code="KeyR"></div>
+                        <div class="key" data-code="KeyT"></div>
+                        <div class="key" data-code="KeyY"></div>
+                        <div class="key" data-code="KeyU"></div>
+                        <div class="key" data-code="KeyI"></div>
+                        <div class="key" data-code="KeyO"></div>
+                        <div class="key" data-code="KeyP"></div>
+                        <div class="key" data-code="BracketLeft"></div>
+                        <div class="key" data-code="BracketRight"></div>
+                        <div class="key size-2 grey stretch" data-code="Backslash"></div>
+                        <div class="key yellow" data-macro="yellow"></div>
+                    </div>
+                    <div class="row">
+                        <div class="key size-3 grey stretch" data-code="CapsLock"></div>
+                        <div class="key" data-code="KeyA"></div>
+                        <div class="key" data-code="KeyS"></div>
+                        <div class="key" data-code="KeyD"></div>
+                        <div class="key" data-code="KeyF"></div>
+                        <div class="key" data-code="KeyG"></div>
+                        <div class="key" data-code="KeyH"></div>
+                        <div class="key" data-code="KeyJ"></div>
+                        <div class="key" data-code="KeyK"></div>
+                        <div class="key" data-code="KeyL"></div>
+                        <div class="key" data-code="Semicolon"></div>
+                        <div class="key" data-code="Quote"></div>
+                        <div class="key size-4 green stretch" data-code="Enter" data-macro="green:Enter"></div>
+                        <div class="key green" data-macro="green"></div>
+                    </div>
+                    <div class="row">
+                        <div class="key size-5 yellow stretch" data-code="ShiftLeft" data-macro="yellow:ShiftLeft"></div>
+                        <div class="key" data-code="KeyZ"></div>
+                        <div class="key" data-code="KeyX"></div>
+                        <div class="key" data-code="KeyC"></div>
+                        <div class="key" data-code="KeyV"></div>
+                        <div class="key" data-code="KeyB"></div>
+                        <div class="key" data-code="KeyN"></div>
+                        <div class="key" data-code="KeyM"></div>
+                        <div class="key" data-code="Comma"></div>
+                        <div class="key" data-code="Period"></div>
+                        <div class="key" data-code="Slash"></div>
+                        <div class="key size-5 yellow stretch" data-code="ShiftRight" data-macro="yellow:ShiftRight"></div>
+                        <div class="key" data-code="ArrowUp"></div>
+                        <div class="key blue" data-macro="blue"></div>
+                    </div>
+                    <div class="row">
+                        <div class="key size-6 red" data-code="ControlLeft" data-macro="red:ControlLeft"></div>
+                        <div class="key size-6 purple" data-code="MetaLeft" data-macro="purple:MetaLeft"></div>
+                        <div class="key size-6 blue" data-code="AltLeft" data-macro="blue:AltLeft"></div>
+                        <div class="key size-7 empty" data-code="Space" data-macro="default:Space"></div>
+                        <div class="key size-6 blue" data-code="AltRight" data-macro="blue:AltRight"></div>
+                        <div class="key size-6 purple" data-code="ContextMenu" data-macro="purple:ContextMenu"></div>
+                        <div class="key" data-code="ArrowLeft"></div>
+                        <div class="key" data-code="ArrowDown"></div>
+                        <div class="key" data-code="ArrowRight"></div>
+                    </div>
                 </div>
+                <!-- <div id="footer">
+                    <a href="https://dribbble.com/shots/14735602-Minimal-keyboard" target="_blank"> <div id="dribbble"></div></a>
+                </div> -->
+                <div class="about-main-text">
+                    안녕하세요! 신입 프론트엔드 개발자 김수미입니다. 
+                    테스트
+                    테스트
+                    테스트
+                    테스트
+                    테스트
+                    테스트
+                    테스트
+                    테스트
+                    테스트
+                    테스트
+                    
+                </div>
+                <button id="about-contact">CONTACT</button>
             </div>
         </section>
-        <!-- <div class="about-contact">
-            CONTACT
-            <span class="about-kakao"><a href="#">kakao</a></span>
-        </div> -->
         <section id="skill-section">
             <h1>#Skills</h1>
-            <p class="skill-more">자세히 보기</p>
-            <div class="skill-border">
+            <div class="skill-border border">
                 <div class="skill-line-1">
                     <div class="skill-box">
                         <i class="fa-brands fa-html5"></i>
@@ -107,63 +215,6 @@
                         <div class="skill-hover-box">0%</div>
                     </div>
                 </div>
-                <div class="skill-line-2">
-                    <ul class="skill-chart">
-                        <li>
-                            <i class="fa-brands fa-html5"></i>
-                            <div class="progress">
-                                <div
-                                    class="progress-bar progress-bar-striped bg-danger progress-bar-animated"
-                                    role="progressbar"
-                                    style="width: 25%"
-                                    aria-valuenow="25"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                >
-                                    0%
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-brands fa-css3-alt"></i>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                    0%
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-brands fa-js"></i>
-                            <div class="progress">
-                                <div
-                                    class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
-                                    role="progressbar"
-                                    style="width: 25%"
-                                    aria-valuenow="25"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                >
-                                    0%
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-brands fa-react"></i>
-                            <div class="progress">
-                                <div
-                                    class="progress-bar progress-bar-striped bg-info progress-bar-animated"
-                                    role="progressbar"
-                                    style="width: 25%"
-                                    aria-valuenow="25"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                >
-                                    0%
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
                 <!-- <div class="skill-line-3">
                     <div class="skill-box-etc"><img src="./skill-etc/Delphi.png" alt="델파이 로고" /></div>
                     <div class="skill-box-etc">mssql</div>
@@ -177,7 +228,10 @@
             기다 이미지 등은 출처가 따로 있음을 밝힙니다. arlet 등으로 명시해주기 -->
             <!-- 동적 효과 -->
             <h1>#Project</h1>
-            <div class="project-border">
+            <div id="project-prograss">
+                <div id="prograss-bar">0%</div>
+            </div>
+            <div class="project-border border">
                 <div id="work-slide">
                     <div class="open-prograssbar"></div>
                     <div class="work-box">
@@ -224,10 +278,6 @@
             </div>
         </section>
     </body>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="main.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"
-    ></script>
 </html>
