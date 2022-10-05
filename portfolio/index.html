@@ -11,9 +11,8 @@
         <link rel="stylesheet" href="style.css" />
         <link rel="shortcut icon" href="./img/favicon.png" />
     </head>
-    <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">        
+    <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
         <nav>
-            <!-- Close, Open할때 움직임 주기, 페이지 열릴때 Open 효과주기 -->            
             <div class="nav-menu">
                 <img src="./img/favicon.png" alt="select-icon" />
                 <span>Home</span>
@@ -85,15 +84,18 @@
                 <image width="100%" filter="url(#blur)" mask="url(#mask1)" href="./img/white-concrete-wall.jpg" />
                 <image width="100%" filter="invert(100%)" mask="url(#mask4)" href="./img/white-concrete-wall.jpg" />
                 <image width="100%" filter="url(#convolve)" mask="url(#mask3)" href="./img/white-concrete-wall.jpg" />
-            </svg>            
+            </svg>
             <div class="home-title">
                 <h1 class="animate__animated animate__bounce">Kimsumi Front-end Portfolio</h1>
             </div>
         </section>
         <section id="about-section">
             <h1>#About-me</h1>
-            <div id="contact-side">CONTACT</div>
-            <div class="about-border border">                
+            <div id="contact-side">
+                <div id="contact-close-button"></div>
+                <h1>CONTACT</h1>
+            </div>
+            <div class="about-border border">
                 <!-- 키보드 오픈 소스 출처:  https://codepen.io/Alca/pen/vYeyOwd-->
                 <div class="keyboard">
                     <div class="row">
@@ -179,17 +181,16 @@
                 </div> -->
                 <div class="about-main-text">
                     안녕하세요! 신입 프론트엔드 개발자 김수미입니다. 
+                    테스트 
+                    테스트 
+                    테스트 
+                    테스트 
+                    테스트 
+                    테스트 
+                    테스트 
+                    테스트 
+                    테스트 
                     테스트
-                    테스트
-                    테스트
-                    테스트
-                    테스트
-                    테스트
-                    테스트
-                    테스트
-                    테스트
-                    테스트
-                    
                 </div>
                 <button id="about-contact">CONTACT</button>
             </div>
@@ -279,5 +280,6 @@
         </section>
     </body>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="./jquery.mousewheel.min.js"></script>
     <script src="main.js"></script>
 </html>

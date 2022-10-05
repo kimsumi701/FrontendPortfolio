@@ -12,7 +12,7 @@ const workText = document.getElementsByClassName('work-text');
 let workWheelcnt = 0;
 
 // 섹션별 이동
-// 추가로 할것: 페이지 사이즈 바뀔때 
+// 추가로 할것: 페이지 사이즈 바뀔때
 let mHtml = $('html');
 let page = 1;
 window.addEventListener(
@@ -23,10 +23,11 @@ window.addEventListener(
     { passive: false }
 );
 mHtml.animate({ scrollTop: 0 }, 10);
-// 프로젝트 휠 이벤트랑 겹침 해결하기 
+// 프로젝트 휠 이벤트랑 겹침 해결하기
 // 리사이징시 위치 맞추기
 $('section').on('wheel', function (e) {
     if (mHtml.is(':animated')) return;
+
     if (e.originalEvent.deltaY > 0) {
         if (page == 4) return;
         page++;
@@ -39,7 +40,7 @@ $('section').on('wheel', function (e) {
 });
 
 // 메뉴 클로즈/오픈
-const asideClose = () => {
+const navClose = () => {
     menuToggle = !menuToggle;
     if (menuToggle) {
         for (i = 0; i < navMenu.length; i++) {
@@ -52,19 +53,22 @@ const asideClose = () => {
             closeBtn.style.transform = 'translateY(-500px)';
             closeBtn.children[0].style.display = 'block';
         }, 1400);
-    }    
+    }
 };
-closeBtn.addEventListener('click', asideClose);
+closeBtn.addEventListener('click', navClose);
 
 // 메뉴 셀렉트(아이콘)
 const selectMenu = (event) => {
     let checkObj = false;
+
     for (i = 0; i < navMenu.length; i++) {
         if (event.target == navMenu[i] || event.target.parentNode == navMenu[i]) {
             selectIcon[i].style.display = 'block';
             navMenu[i].style.borderBottomColor = '#eee';
+            let location = document.getElementsByTagName('section')[i].offsetTop;
+            window.scrollTo({ top: location, behavior: 'smooth' });
         } else {
-            selectIcon[i].style.display = 'none';            
+            selectIcon[i].style.display = 'none';
             navMenu[i].style.borderBottomColor = '#aaa';
         }
     }
@@ -72,18 +76,25 @@ const selectMenu = (event) => {
 document.getElementsByTagName('nav')[0].addEventListener('click', selectMenu);
 
 //Contact
-contactBtn.addEventListener('click', () => { });
-
+contactBtn.addEventListener('click', () => {
+    document.getElementById('contact-side').style.left < '0' ? (document.getElementById('contact-side').style.left = '0') : (document.getElementById('contact-side').style.left = '-100%');
+});
+document.getElementById('contact-close-button').addEventListener('click', () => {
+    document.getElementById('contact-side').style.left = '-100%';
+});
 // 프로젝트 영역 휠 이벤트
-function disableScroll() {6
+function disableScroll() {
+    6;
     let x = window.scrollX;
     let y = window.scrollY;
-    window.onscroll = function () { window.scrollTo(x, y); };
+    window.onscroll = function () {
+        window.scrollTo(x, y);
+    };
 }
-function enableScroll(){
-    window.onscroll = function(){};
+function enableScroll() {
+    window.onscroll = function () {};
 }
-const prograss = () => {    
+const prograss = () => {
     let pcount = 100 / workBox.length;
     if (prograssBar.style.width != '100%') {
         prograssBar.style.width = `${pcount * (workWheelcnt + 1)}%`;
@@ -92,13 +103,12 @@ const prograss = () => {
             prograssBar.style.borderBottomRightRadius = '20px';
         } else {
             prograssBar.style.borderTopRightRadius = 0;
-            prograssBar.style.borderBottomRightRadius = 0;            
-        }    
+            prograssBar.style.borderBottomRightRadius = 0;
+        }
     } else {
         // enableScroll();
     }
-    
-}
+};
 const workCoverOpen = () => {
     workCover[workWheelcnt].style.display = 'none';
     workCover[workWheelcnt].style.fontSize = '0';
@@ -107,31 +117,32 @@ const workCoverOpen = () => {
     workImg[workWheelcnt].style.display = 'block';
     workText[workWheelcnt].style.display = 'block';
 };
-    
-workSlide.addEventListener('wheel', () => {
 
+workSlide.addEventListener('wheel', (e) => {
     if (workWheelcnt < workBox.length) {
+        // let direction = e.deltaY;
         console.log('휠 체크', workWheelcnt);
         disableScroll();
         prograss();
-        workCoverOpen();        
+        workCoverOpen();
         workWheelcnt += 1;
+        // 델타값에 따라 workCover Open/Close, prograss 수정
+        // let direction = e.deltaY > 0 ?
+        //     {
+        //         workWheelcnt = workWheelcnt + 1,
+        //     } :
+        //     { workWheelcnt = workWheelcnt - 1,}
     }
 });
 workSlide.addEventListener('mouseout', enableScroll);
+
 /* 
+addEventListener("mousewheel", e => {
+  const direction = e.deltaY > 0 ? "Scroll Down" : "Scroll Up";;
+  
+  console.log(direction);
+});
 
-/**
-  현재의 스크롤 상단 값을 반환받아 스크롤 이벤트 발생시 계속 같은 위치를 적용하도록 함.
-    
-}
- 
-
-*/
-/**
- * 등록된 이벤트를 Overwrite 함.
- 
- 
 */
 
 // 키보드(https://codepen.io/Alca/pen/vYeyOwd)
