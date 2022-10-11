@@ -25,6 +25,7 @@ window.addEventListener(
 mHtml.animate({ scrollTop: 0 }, 10);
 // 프로젝트 휠 이벤트랑 겹침 해결하기
 // 리사이징시 위치 맞추기
+
 $('section').on('wheel', function (e) {
     if (mHtml.is(':animated')) return;
 
@@ -37,43 +38,63 @@ $('section').on('wheel', function (e) {
     }
     var posTop = (page - 1) * $(window).height();
     mHtml.animate({ scrollTop: posTop });
+    scrollChangeMenu(page -1);
 });
 
 // 메뉴 클로즈/오픈
 const navClose = () => {
     menuToggle = !menuToggle;
     if (menuToggle) {
-        for (i = 0; i < navMenu.length; i++) {
-            navMenu[i].style.transform = `translateY(${505 - 135 * i}px)`;
-            navMenu[i].style.visibility = 'hidden';
-        }
-
-        setTimeout(() => {
-            closeBtn.children[1].textContent = 'Open';
-            closeBtn.style.transform = 'translateY(-500px)';
-            closeBtn.children[0].style.display = 'block';
-        }, 1400);
+        Array.from(navMenu).forEach((item) => {
+            item.style.opacity = '0';
+            item.style.visibility = 'hidden';
+        });       
+       
+        closeBtn.children[1].textContent = 'Open';
+        closeBtn.style.transform = 'translateY(-500px)';
+        closeBtn.children[0].style.display = 'block';
+    } else {
+        Array.from(navMenu).forEach((item) => {
+            item.style.opacity = '1';
+            item.style.visibility = 'visible';
+        });
+        closeBtn.children[1].textContent = 'Close';
+        closeBtn.style.transform = 'translateY(20px)';                    
+        closeBtn.children[0].style.display = 'none';    
+        // 여기서 적용안되는 이유 찾기!
+        scrollChangeMenu(page - 1);
     }
 };
 closeBtn.addEventListener('click', navClose);
 
-// 메뉴 셀렉트(아이콘)
-const selectMenu = (event) => {
-    let checkObj = false;
+// 스크롤 메뉴 셀렉트(아이콘)
+function scrollChangeMenu(select) {
+    Array.from(selectIcon).forEach((item) => {
+        item.style.display = 'none';        
+    })
+    Array.from(navMenu).forEach((item) => {
+        item.style.borderBottomColor = '#aaa';
+    });        
+    selectIcon[select].style.display = 'block';
+    // console.log(selectIcon[select].style.display);
+    navMenu[select].style.borderBottomColor = '#eee';        
+}
 
+
+// 마우스 메뉴 셀렉트(아이콘)
+const mouseSelectMenu = (event) => {        
     for (i = 0; i < navMenu.length; i++) {
-        if (event.target == navMenu[i] || event.target.parentNode == navMenu[i]) {
-            selectIcon[i].style.display = 'block';
-            navMenu[i].style.borderBottomColor = '#eee';
+        if (event.target == navMenu[i] || event.target.parentNode == navMenu[i]) {           
+            scrollChangeMenu(i);
             let location = document.getElementsByTagName('section')[i].offsetTop;
             window.scrollTo({ top: location, behavior: 'smooth' });
-        } else {
+        } else {            
             selectIcon[i].style.display = 'none';
             navMenu[i].style.borderBottomColor = '#aaa';
         }
     }
 };
-document.getElementsByTagName('nav')[0].addEventListener('click', selectMenu);
+document.getElementsByTagName('nav')[0].addEventListener('click', mouseSelectMenu);
 
 //Contact
 contactBtn.addEventListener('click', () => {
@@ -82,9 +103,9 @@ contactBtn.addEventListener('click', () => {
 document.getElementById('contact-close-button').addEventListener('click', () => {
     document.getElementById('contact-side').style.left = '-100%';
 });
+
 // 프로젝트 영역 휠 이벤트
 function disableScroll() {
-    6;
     let x = window.scrollX;
     let y = window.scrollY;
     window.onscroll = function () {
@@ -109,30 +130,33 @@ const prograss = () => {
         // enableScroll();
     }
 };
-const workCoverOpen = () => {
+const workCoverOpen = () => {    
     workCover[workWheelcnt].style.display = 'none';
     workCover[workWheelcnt].style.fontSize = '0';
     workImg[workWheelcnt].style.borderBottomLeftRadius = 0;
     workImg[workWheelcnt].style.borderBottomRightRadius = 0;
     workImg[workWheelcnt].style.display = 'block';
-    workText[workWheelcnt].style.display = 'block';
+    workText[workWheelcnt].style.display = 'block';     
+    workWheelcnt > workBox.length ? workWheelcnt = workBox.length : workWheelcnt += 1;        
 };
-
-workSlide.addEventListener('wheel', (e) => {
-    if (workWheelcnt < workBox.length) {
-        // let direction = e.deltaY;
-        console.log('휠 체크', workWheelcnt);
-        disableScroll();
-        prograss();
-        workCoverOpen();
-        workWheelcnt += 1;
-        // 델타값에 따라 workCover Open/Close, prograss 수정
-        // let direction = e.deltaY > 0 ?
-        //     {
-        //         workWheelcnt = workWheelcnt + 1,
-        //     } :
-        //     { workWheelcnt = workWheelcnt - 1,}
-    }
+const workCoverClose = () => {
+    workWheelcnt < 0 ? workWheelcnt = -1 : workWheelcnt -= 1;
+    workCover[workWheelcnt].style.display = 'flex';
+    workCover[workWheelcnt].style.alignItems = 'center';
+    workCover[workWheelcnt].style.justifyContent = 'center';
+    workCover[workWheelcnt].style.fontSize = '80px';    
+    workImg[workWheelcnt].style.borderBottomLeftRadius = '20px';
+    workImg[workWheelcnt].style.borderBottomRightRadius = '20px';
+    workImg[workWheelcnt].style.display = 'none';
+    workText[workWheelcnt].style.display = 'none';     
+};
+workSlide.addEventListener('wheel', (e) => {                    
+    disableScroll();
+    prograss();   
+    let direction = e.deltaY > 0 ? workCoverOpen() : workCoverClose();       
+    
+    
+    // 델타값에 따라 workCover Open/Close, prograss 수정   
 });
 workSlide.addEventListener('mouseout', enableScroll);
 
