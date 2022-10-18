@@ -152,7 +152,7 @@ const workCoverClose = () => {
 };
 workSlide.addEventListener('wheel', (e) => {                    
     disableScroll();
-    prograss();   
+    // prograss();   
     let direction = e.deltaY > 0 ? workCoverOpen() : workCoverClose();       
     
     
