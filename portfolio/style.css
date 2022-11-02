@@ -1,9 +1,5 @@
 /* 폰트 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-@font-face {
-    src: url(./fonts/Egiela.otf);
-    font-family: Egiela;
-}
 /* section 세팅 */
 html::-webkit-scrollbar {
     display: none;
@@ -28,10 +24,8 @@ section {
 }
 section h1 {
     margin-top: 20px;
-    font-size: 5em;
+    font-size: 4em;
     font-weight: 550;
-    font-family: Egiela;
-    /* line-height: 150px; */
 }
 section h1:not(#home-section h1) {
     color: #aaaaaa;
@@ -94,16 +88,20 @@ nav div {
     transition: 1.2s;
     cursor: pointer;
 }
-#nav-open {
-    display: none;
-    transform: rotate(-10deg);
+
+.selected {
+    border-bottom-color: #fafafa;
 }
-nav div:not(:nth-child(1)) img {
+.selected img {
+    display: block;
+}
+
+
+nav div img {
     display: none;
 }
 /* 삼각형 각도 */
-nav div:nth-child(1) {
-    border-bottom-color: #eee;
+nav div:nth-child(1) {    
     transform: rotate(20deg);
 }
 nav div:nth-child(2) {
@@ -123,11 +121,14 @@ nav div span {
     display: block;
     left: -25px;
     bottom: -90px;
-    color: black;
-    font-size: 25px;
-    font-weight: 550;
-    font-family: Egiela;
+    /* color: black; */
+    color: transparent;    
+    background: linear-gradient(to top, black, #fafafa);
+    -webkit-background-clip: text;
+    font-size: 18px;
+    /* font-weight: 550;     */
 }
+
 /* 텍스트 각도 */
 nav div:nth-child(1) span {
     left: -32px;
@@ -140,8 +141,8 @@ nav div:nth-child(3) span {
     left: -30px;
     transform: rotate(-55deg);
 }
-nav div:nth-child(4) span,
-nav div:nth-child(4) img {
+nav div:nth-child(4) span {
+    left: -30px;
     transform: rotate(65deg);
 }
 nav div:nth-child(5) span {
@@ -157,18 +158,21 @@ nav div:nth-child(2) img {
 nav div:nth-child(3) img {
     transform: rotate(40deg);
 }
+nav div:nth-child(4) img {
+    transform: rotate(65deg);
+}
 #nav-close {
     transition: 1.7s;
 }
 /* #About me */
 #about-section {
-    position: relative;    
-    height: 100vh;
+    position: relative;        
     text-align: center;
     overflow: hidden;
 }
 .about-border {
-    position: relative;    
+    position: relative;       
+    height: 100vh;
     text-align: center;
 }
 .about-main-text {
@@ -181,7 +185,7 @@ nav div:nth-child(3) img {
 }
 .about-item {
     display: inline-block;    
-    margin: 0 -100px 80px 100px;    
+    margin: 0 -100px 200px 100px;    
     padding: 10px;
     text-align: left;
 }
@@ -206,41 +210,56 @@ nav div:nth-child(3) img {
     font-size: 10px;
 }
 #about-contact {
-    position: absolute;
-    left: 0;
-    /* bottom: 40px; */
-    top: 120px;
-    width: 340px;    
-    height: 100px;
-    border: 1px solid #777777;
-    border-left: none;
-    font-size: 50px;
-    font-family: Egiela;
-    background: none;
-    cursor: pointer;
-    /* margin-top: 20px; */
-}
-#contact-side {
     position: absolute;    
+    left: -8vw;
+    bottom: 100px;
+    width: 100px;    
+    height: 100px;
+    border: none;
+    font-size: 12em;
+    font-size: 200px;
+    font-weight: bold;
+    background: none;
+    transform: rotate(-90deg);
+    cursor: pointer;    
+}
+#contact-side {    
+    position: absolute;    
+    display: flex;    
+    justify-content: space-between;
     left: -100%;
-    width: 350px;
-    height: 100%;
-    line-height: 200px;
+    bottom: 1px;
+    width: 100%;
+    height: 200px;
+    line-height: 100px;
     background-color: #555555;
     z-index: 2;
     transition: 600ms;    
+    overflow-y: hidden;
 }
-#contact-side h1 {
-    font-size: 50px;
-    font-family: Egiela;
-    margin-left: 20px;
+.contact-group {
+    height: 100%;
+    margin-top: 3px;
 }
-#contact-close-button {
-    float: right;
+#contact-side p img {
+    height: 30px;
+}
+#contact-side p {    
+    display: inline-block;       
+    margin-right: 5px;
+    padding: 40px 15px 40px 15px;
+    border-radius: 14px;        
+    background-color: white;    
+}
+#contact-side h1 {    
+    width: 50px;
+    margin: 0;    
+    font-size: 450px;    
+}
+#contact-close-button {        
     width: 25px;
     height: 25px;
-    margin: 10px 10px 0 0;
-    text-align: start;
+    margin: 10px 20px 0 0;     
     cursor: pointer;
 }
 #contact-close-button::before,
@@ -258,26 +277,8 @@ nav div:nth-child(3) img {
 #contact-close-button::after {
     transform: rotate(-45deg);
 }
-#contact-side p img {
-    height: 30px;
-}
-#contact-side p {    
-    display: inline-block;   
-    margin-top: 150px;     
-    padding: 7px 15px 7px 15px;
-    border-radius: 14px;    
-    background-color: white;    
-}
-/* .contact-mail {
-    text-align: right;
-    margin-right: 175px;
-}
-.contact-kakao,
-.contact-git
- {
-    margin-left: 175px;
-    text-align: left;
-}  */
+
+
 
 /* #About keyboard */
 :root {
@@ -433,16 +434,113 @@ nav div:nth-child(3) img {
 
 
 /* #Skills */
-.skill-border {    
+#skill-section {
+    overflow: hidden;
+}
+
+.skill-mobile {
+    display: none;
+    align-items: center;
     height: 70vh;    
     margin-top: 100px;    
 }
-.skill-line-1, .skill-line-2, .skill-line-3 {
+
+.skill-pc {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-chart {    
+    position: relative;
+    /* top: -100%; */
+    width: 700px;
+    line-height: 65px;
+    /* transition: 1s;
+    opacity: 0; */
+}
+
+/* .scroll-line {        
+    top: 0;   
+    opacity: 1;     
+} */
+
+.chart span {
+    display: inline-block;
+    width: 120px;
+}
+
+.progress-box {
+    position: relative;
+    display: inline-block;
+    --bar: 6.7;    
+}
+
+.chart progress {
+    appearance: none;
+    transition: 1s;
+}
+
+.chart progress::-webkit-progress-bar {
+    width: 700px;
+    height: 22px;
+    border-radius:10px;
+    background:#f0f0f0;    
+    box-shadow: inset 3px 3px 10px #ccc;
+}
+
+.chart progress::-webkit-progress-value {
+    border-radius:10px;    
+    background: #1D976C;
+    background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);
+    background: linear-gradient(to right, #93F9B9, #1D976C);
+
+}
+
+.chart-sticker {
+    position: absolute;    
+    top: -10px;    
+    width: 27px;
+    height: 23px;
+    border-radius: 3px;
+    color: #fafafa;
+    font-size: 5px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 25px;
+    background-color: #484848;    
+}
+
+.chart-sticker:after {
+    position: absolute;
+    content: "";
+    top: 18px;
+    left: 3px;
+    border-top: 10px solid #484848;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+}
+
+.sticker1 {
+    left: calc(var(--bar) * 60px);        
+}
+.sticker2 {
+    left: calc(var(--bar) * 65px);        
+}
+.sticker3 {
+    left: calc(var(--bar) * 70px);        
+}
+
+.skill-line {
     position: relative;
     display: flex;      
+    top: -100%;    
     width: 65vw;    
     margin: 0 auto;
     padding-left: 10px;    
+    opacity: 0;
+    transition: 1s;
     z-index: 9;
 }
 
@@ -475,7 +573,7 @@ nav div:nth-child(3) img {
     padding: 4px;
 }
 .skill-line-2 img {
-    width: 70px;    
+    width: 85px;    
 }
 .skill-line-3 img {
     width: 100px;
@@ -483,34 +581,7 @@ nav div:nth-child(3) img {
     margin-left: -10px;     
 }
 
-.skill-hover-box {
-    /* display: none; */
-    position: absolute;
-    top: 68px;
-    left: 50px;
-    width: 100%;
-    height: 60px;
-    font-size: 0;
-    background-color: #aaa;
-    opacity: 0.7;
-    z-index: -29;
-}
 
-.skill-box:hover .skill-hover-box {
-    position: absolute;
-    display: flex;
-    justify-content: center;    
-    /* top: 50px;      
-    left: 45px;  
-    width: 110px;
-    height: auto; */
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 55px;
-    background-color: #fff;
-    opacity: 0.7;
-    z-index: 1;
-}
 /* #project */
 #project-prograss {
     width: 80%;
@@ -580,12 +651,7 @@ nav div:nth-child(3) img {
     display: none;
 }
 
-@media (max-height: 850px) {
-    /* .keyboard {
-        display: none;
-    }    */    
-}
-@media (max-width: 1230px) or (max-height: 850px) {
+@media (max-width: 1230px)  {
     .about-main-text {
         margin: 0;
     }
@@ -653,7 +719,7 @@ nav div:nth-child(3) img {
     /* #About */
     #about-section {
         height: 100vh;
-    }
+    }    
     .about-item div {
         float: none;
         width: 250px;    
@@ -662,25 +728,27 @@ nav div:nth-child(3) img {
     .about-main-text {
         float: none;
         width: 50%;
-    }
+        font-size: 15px;
+    }        
     #about-contact {
-        bottom: 20px;                
+        position: absolute;
+        left: -8vw;
+        bottom: 10px;
+        width: 100px;    
+        height: 100px;
+        border: 1px solid #777777;
+        border-radius: 50%;    
+        font-size: 18px;
+        font-family: Egiela;
+        background: none;
+        background-color: #fafafa;
+        cursor: pointer;    
     }
-    #contact-side {
-        width: 40%;
+    #contact-side h1{
+        font-size: 300px;
     }   
-    .contact-mail {
-        text-align: right;
-        /* margin-right: 195px; */
-    }
-    .contact-kakao,
-    .contact-git
-     {
-        margin-left: 130px;
-        text-align: left;
-    } 
+
     /* #Skill */
-    
     .skill-tag {
         position: absolute;    
         left: 0;        
@@ -699,22 +767,12 @@ nav div:nth-child(3) img {
         width: 80vw;
         margin-top: 70px; 
     }      
-    .skill-hover-box {
-        top: 15px;
-        left: 10px;
-    }
     .skill-line-2 .skill-hover-box, 
     .skill-line-3 .skill-hover-box {
         top: 18px;
         left: 8px;
     }
-    .skill-box:hover .skill-hover-box {        
-        top: 5px;      
-        left: 0px;  
-        width: 85px;
-        height: 75px;    
-        line-height: 70px;   
-    }
+
     /* #Project */
     #project-section {
         height: auto;
@@ -752,14 +810,18 @@ nav div:nth-child(3) img {
 }
 /* 모바일 */
 @media (max-width: 430px) {
-    /* section {
-        height: auto;
-    } */
+    section {
+        /* height: auto;         */
+    }   
     aside {
         display: none;
     }
     section h1 {
-        font-size: 3em;
+        margin: 0;
+        font-size: 3em;        
+    }
+    .border {        
+        height: 100vh;
     }
     /* home */
     .home-title h1 {
@@ -768,13 +830,22 @@ nav div:nth-child(3) img {
         text-align: center;
     }
     /* #About */
+    .about-border {
+        position: relative;
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+    }
+    #about-contact {
+       
+    }
     #contact-side {
         width: 100%;
     }    
     .about-main-text {
         float: none;
         width: 100%;
-        font-size: 15px;
+        font-size: 13px;        
         /* margin-bottom: 50px; */
     }
     .about-item div {        
@@ -785,16 +856,7 @@ nav div:nth-child(3) img {
     .about-list {
         padding: 5px;
     }
-    .contact-mail {
-        text-align: right;
-        margin-right: 195px;
-    }
-    .contact-kakao,
-    .contact-git
-     {
-        margin-left: 195px;
-        text-align: left;
-    } 
+        
     /* #Skill */
     #skill-section {
         height: auto;
@@ -804,28 +866,24 @@ nav div:nth-child(3) img {
     }
     .skill-line-1,
     .skill-line-2,
-    .skill-line-3,
-    .skill-box {
-        justify-content: center;
-        margin: 0 auto; 
-    }    
-    .skill-line-1 {
+    .skill-line-3
+    {
         flex-direction: column;
-        text-align: center;
+        justify-content: center;
+        margin: 0 auto;         
+        /* text-align: center; */
     }    
-    .skill-line-2 img {
-        margin: 0;        
-    } 
-    .skill-line-3 img {
+    .skill-box {
+        margin-top: 5px;
+        text-align: center;
+    }
+    #lang-img4 {
         margin-left: -20px;
     }
     .skill-box i {
         font-size: 70px;
     }
-    
-    .skill-box:hover .skill-hover-box {
-        display: none;
-    }
+
     /* #Project */
     #project-section {
         height: auto;

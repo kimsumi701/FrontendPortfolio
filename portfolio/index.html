@@ -5,15 +5,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>포트폴리오</title>
-        <script src="https://kit.fontawesome.com/8baca4a0ad.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <script src="https://kit.fontawesome.com/8baca4a0ad.js" crossorigin="anonymous"></script>        
         <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="style.css" />
         <link rel="shortcut icon" href="./img/favicon.png" />
     </head>
     <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
         <nav>
-            <div class="nav-menu">
+            <div class="nav-menu selected">
                 <img src="./img/favicon.png" alt="select-icon" />
                 <span>Home</span>
             </div>
@@ -86,18 +85,19 @@
                 <image width="100%" filter="url(#convolve)" mask="url(#mask3)" href="./img/white-concrete-wall.jpg" />
             </svg>
             <div class="home-title">
-                <h1 class="animate__animated animate__bounce">Kimsumi Front-end Portfolio</h1>
+                <h1>Kimsumi Front-end Portfolio</h1>
             </div>
         </section>
         <section id="about-section">
-            <h1>#About-me</h1>
-            <button id="about-contact">CONTACT</button>
-            <div id="contact-side">
+            <h1>#About-me</h1>            
+            <div id="contact-side">                
+                <h1>CONTACT</h1> 
+                <div class="contact-group">
+                    <p class="contact-kakao"><a href="#" target="_blank"><img src="./img/free-icon-kakao-talk-2111466.png" alt="카카오톡 아이콘"></a></p>              
+                    <p class="contact-mail"><a href="mailto:kimsumi701@gmail.com" target="_blank"><img src="./img/Mail_31108.png" alt="이메일 아이콘"></a></p>
+                    <p class="contact-git"><a href="https://github.com/kimsumi701" target="_blank"><img src="./img/GitHub-Mark-32px.png" alt="깃허브 아이콘"></a></p>                             
+                </div>                                 
                 <div id="contact-close-button"></div>
-                <h1>CONTACT</h1>                  
-                <p class="contact-kakao chat"><a href="#" target="_blank"><img src="./img/free-icon-kakao-talk-2111466.png" alt="카카오톡 아이콘"></a></p>              
-                <p class="contact-mail chat"><a href="mailto:kimsumi701@gmail.com" target="_blank"><img src="./img/Mail_31108.png" alt="이메일 아이콘"></a></p>
-                <p class="contact-git"><a href="https://github.com/kimsumi701" target="_blank"><img src="./img/GitHub-Mark-32px.png" alt="깃허브 아이콘"></a></p>                             
             </div>
             <div class="about-border border">
                 <div class="about-main-text">
@@ -214,55 +214,98 @@
                       <div class="key" data-code="ArrowDown"></div>
                       <div class="key" data-code="ArrowRight"></div>
                     </div>
-                  </div>
+                </div>
                 <!-- <div id="footer">
                     <a href="https://dribbble.com/shots/14735602-Minimal-keyboard" target="_blank"> <div id="dribbble"></div></a>
                 </div> -->                
-                
+                <button id="about-contact">CONTACT</button>
             </div>
         </section>
         <section id="skill-section">
             <h1>#Skills</h1>
-            <div class="skill-border border">                
-                <div class="skill-line-1">                    
+            <div class="skill-pc border">
+                <div class="skill-chart">
+                    <div class="chart chart-html">
+                        <span>HTML</span>
+                        <div class="progress-box">
+                            <progress value="60" max="100"></progress>
+                            <div class="chart-sticker sticker1">60%</div>
+                        </div>                        
+                    </div>
+                    <div class="chart chart-css">
+                        <span>CSS</span>                        
+                        <div class="progress-box">
+                            <progress value="60" max="100"></progress>
+                            <div class="chart-sticker sticker1">60%</div>
+                        </div>    
+                    </div>
+                    <div class="chart chart-js">
+                        <span>JavaScript</span>                        
+                        <div class="progress-box">
+                            <progress value="65" max="100"></progress>
+                            <div class="chart-sticker sticker2">65%</div>
+                        </div>    
+                    </div>
+                    <div class="chart chart-jq">
+                        <span>JQuery</span>
+                        <div class="progress-box">
+                            <progress value="60" max="100"></progress>
+                            <div class="chart-sticker sticker1">60%</div>
+                        </div>
+                    </div>
+                    <div class="chart chart-react">
+                        <span>React</span>
+                        <div class="progress-box">
+                            <progress value="60" max="100"></progress>
+                            <div class="chart-sticker sticker1">60%</div>
+                        </div>
+                    </div>
+                    <div class="chart chart-sql">
+                        <span>Ms-sql</span>
+                        <div class="progress-box">
+                            <progress value="70" max="100"></progress>
+                            <div class="chart-sticker sticker3">70%</div>
+                        </div>
+                    </div>
+                    <div class="chart chart-bootstrap">
+                        <span>Bootstrap</span>
+                        <progress value="0" max="100"></progress>
+                    </div>
+                </div>                
+            </div>
+            <div class="skill-mobile border">                
+                <div class="skill-line-1 skill-line">                    
                     <p class="skill-tag">Language</p>
                     <div class="skill-box">
-                        <i class="fa-brands fa-html5" style="color: #E55125"></i>
-                        <div class="skill-hover-box">0%</div>
+                        <i class="fa-brands fa-html5" style="color: #E55125"></i>                        
                     </div>
                     <div class="skill-box">
-                        <i class="fa-brands fa-css3-alt" style="color: #0A73B8"></i>
-                        <div class="skill-hover-box">0%</div>
+                        <i class="fa-brands fa-css3-alt" style="color: #0A73B8"></i>                        
                     </div>
                     <div class="skill-box">
-                        <i class="fa-brands fa-js" style="color: #E5A228"></i>
-                        <div class="skill-hover-box">0%</div>
+                        <i class="fa-brands fa-js" style="color: #E5A228"></i>                        
                     </div>
                     <div class="skill-box">
-                        <img src="./img/jquery.png" alt="제이쿼리 아이콘">
-                        <div class="skill-hover-box">0%</div>
+                        <img id="lang-img4" src="./img/jquery.png" alt="제이쿼리 아이콘">                        
                     </div>
                     <div class="skill-box">
-                        <i class="fa-brands fa-react" style="color: #7ee5fc"></i>
-                        <div class="skill-hover-box">0%</div>
+                        <i class="fa-brands fa-react" style="color: #7ee5fc"></i>                        
                     </div>               
                 </div>
-                <div class="skill-line-2">
+                <div class="skill-line-2 skill-line">
                     <p class="skill-tag">DB</p>
                     <div class="skill-box">
-                        <img src="./img/db.png" alt="ms-sql">
-                        <div class="skill-hover-box">MSSQL</div>
+                        <img src="./img/sql-server.png" alt="ms-sql">                        
                     </div>                      
                     <div class="skill-box"></div>                      
                     <div class="skill-box"></div>                      
                     <div class="skill-box"></div>                      
                     <div class="skill-box"></div>                      
                 </div>               
-                <div class="skill-line-3">
+                <div class="skill-line-3 skill-line">
                     <p class="skill-tag">etc</p>
                     <div class="skill-box">
-                        <img src="./img/bootstrap.png" alt="ms-sql">
-                        <div class="skill-hover-box"></div>                        
+                        <img src="./img/bootstrap.png" alt="ms-sql">                        
                     </div>  
                     <div class="skill-box"></div>
                     <div class="skill-box"></div>
